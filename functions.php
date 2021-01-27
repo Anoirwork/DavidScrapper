@@ -135,10 +135,14 @@ function writeXLSX($filename, $rows, $keys = [], $formats = [])
 
     // write the rows
 
-    $a = "A";
-    foreach ($rows as $value) {
-        $doc->getActiveSheet()->setCellValue($a . "2", $value);
-        $a++;
+    $i = 2;
+    foreach ($rows as $values) {
+        $a = "A";
+        foreach ($values as $value) {
+            $doc->getActiveSheet()->setCellValue($a . $i, $value);
+            $a++;
+        }
+        $i++;
     }
 
     // write the header row from the $keys
